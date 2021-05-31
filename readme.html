@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <script src="live.js"></script>
+        <h1>Tag Checker</h1>
+        <textarea id="tagTextarea" style="width: 100%; height:14em;line-height: 1.1em;">
+            The following text<C><B>is centred and in boldface</B></C>
+
+            <B>This <\g>is <B>boldface</B> in <<*> a</B> <\6> <<d>sentence
+                        
+            <B><C> This should be centred and in boldface, but the tags are wrongly nested </B></C>
+                        
+            <B>This should be in boldface, but there is an extra closing tag</B></C>
+                        
+            <B><C>This should be centred and in boldface, but there is a missing closing tag</C>
+        </textarea>
+        <br /><br />
+        <span id="validationOutput"></span>
+    </body>
+    <script src="tagChecker.js"></script>
+</html>
