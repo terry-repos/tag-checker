@@ -46,7 +46,7 @@ let get_unmatched_tags = (tags) => {
             if ( tagI !== (tags.length-1) && !tag.includes("/") ){
                 // if next tag is a closing tag, and matches letter of opening...
                 if ( tags[ tagI+1 ].includes("/") && tags[ tagI+1 ].includes( tag[1] ) ) {
-                    // we can remove both the opening and container tags!
+                    // we can remove both the opening and closing tags!
                     unmatchedTags.splice(tagI, 2);
                     lastIterationMatched = true;
                 }
@@ -65,6 +65,7 @@ let make_validation_output = ( line, tags ) => {
         
         let nestingError = (tags.length > 2 && (tags.length % 2)===0);
         if ( nestingError ){
+            //malformed nested tags
             let newTag1 = ( tags[1].includes("/") ) ? `${tags[1].replace('/',"")}` : `${tags[1].replace("<","</")}`;
             output = `Expected ${tag_to_str(newTag1)} found ${tag_to_str(tags[2])}`;
         } else if ( tags.length <= 2) {
